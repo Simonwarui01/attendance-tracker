@@ -1,25 +1,32 @@
-import StudentList from './StudentList';
-
-// TODO 1: Add a resetAttendance function to mark all students as absent
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navigation from './Navigation';
+import Home from './pages/Home';
+import About from './pages/About';
+import Academics from './pages/Academics';
+import Admissions from './pages/Admissions';
+import Gallery from './pages/Gallery';
+import Contact from './pages/Contact';
+import Footer from './Footer';
 
 function App() {
-  const initialStudents = [
-    { id: 1, name: 'Alice', present: false },
-    { id: 2, name: 'Bob', present: false },
-    { id: 3, name: 'Charlie', present: false },
-    { id: 4, name: 'Diana', present: false }
-  ];
-
-  // TODO 2: Create a toggleAttendance function and pass it to StudentList
-
   return (
-    <div className='container'>
-      <h1>🏫 Attendance Tracker</h1>
-      <p>Present: </p>
-
-      {/* TODO 3: Add a Reset Attendance button here */}
-      <StudentList />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-gray-50 scroll-smooth">
+        <Navigation />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/academics" element={<Academics />} />
+            <Route path="/admissions" element={<Admissions />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
